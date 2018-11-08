@@ -9,7 +9,7 @@
   <div class="padre">
   <div class="card">
     <div class="container">
-      <h1 class="texto1">Iniciar Sesión</h1>
+      <h1 class="texto1" style="font-size:3vw">Iniciar Sesión</h1>
       <form id="LoginForm">
         <input type="text"  id="inputUser" placeholder="Usuario"><br>
         <input type="password"  id="inputPass" placeholder="Contraseña"><br>

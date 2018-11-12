@@ -9,15 +9,18 @@
 <body>
 
   <div class="topnav">
-    <a href="index.php" class="active">SALIR</a>
+    <a href="index.php">SALIR</a>
+    <a href="doctors.php">DOCTORES</a>
+    <a href="patients.php" class="active">INICIO</a>
+    <a href="#">doctor_name</a>
   </div>
 
   <div class="main">
     <div class="padre">
     <div class="card">
       <div class="container">
-        <h2>Nombre doctor</h2>
-        <p>Este doctor se graduo de harvard con especialidad en gastroenteorología etc etc lorem ippsum dosdjaksdjlsakdjalskdjalksjdlksajdaslasdhoqjbwoqwubdouqwhdouqwhdo uwhodqhwoudhqouwdqwoudjqowjdqouwdjqouwdousqbcoqusbcqoubcoucbeqouboequfhueqgtuo qryqieoroqncoisbqouwdhouqyequowe</p>
+        <h2>Nombre_paciente</h2>
+        <p>Este paciente es chevere</p>
         <h3>Correo</h3>
           <div>Telefono1, Telefono2, Telefono3, Telefono4</div>
       </div>

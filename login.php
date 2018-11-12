@@ -9,10 +9,11 @@
   <div class="padre">
   <div class="card">
     <div class="container">
-      <h1 class="texto1" style="font-size:3vw">Bienvenido a MedTech</h1>
+      <h1 class="texto1" style="font-size:3vw">Iniciar Sesión</h1>
       <form id="LoginForm">
+        <input type="text"  id="inputUser" placeholder="Usuario"><br>
+        <input type="password"  id="inputPass" placeholder="Contraseña"><br>
         <button type="submit" id="Acceder">Acceder</button>
-        <button type="submit" id="Invitado">Invitado</button>
       </form>
     </div>
   </div>

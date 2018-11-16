@@ -3,9 +3,7 @@ session_start();
 if(!isset($_SESSION['invitado'])){
   header("Location: index.php");
 }
-
-
-
+include("bdd/query.php");
  ?>
 
 <!DOCTYPE html>
@@ -21,17 +19,27 @@ if(!isset($_SESSION['invitado'])){
   <div class="topnav">
     <a href="logout.php" class="active">SALIR</a>
   </div>
+
+<?php
+  while ($row = pg_fetch_row($result)) {
+  echo '
   <div class="main">
     <div class="padre">
     <div class="card">
       <div class="container">
-        <h2>Nombre doctor</h2>
-        <p>Este doctor se graduo de harvard con especialidad en gastroenteorología etc etc lorem ippsum dosdjaksdjlsakdjalskdjalksjdlksajdaslasdhoqjbwoqwubdouqwhdouqwhdo uwhodqhwoudhqouwdqwoudjqowjdqouwdjqouwdousqbcoqusbcqoubcoucbeqouboequfhueqgtuo qryqieoroqncoisbqouwdhouqyequowe</p>
-        <h3>Correo</h3>
-          <div>Telefono1, Telefono2, Telefono3, Telefono4</div>
+        <h2>'.$row[0].'</h2>
+        <p>'.$row[1].'</p>
+        <h3>'.$row[2].'</h3>
+          <div>'.$row[3].'</div>
       </div>
     </div>
   </div>
+  </div>
+  ';
+}
+pg_free_result($result);
+pg_close($con);
+ ?>
 
 </body>
 </html>

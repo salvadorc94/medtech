@@ -1,3 +1,11 @@
+<?php
+session_start();
+if(!isset($_SESSION['admin'])){
+  header("Location: login.php");
+}
+//include("bdd/query.php");
+ ?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -73,7 +81,7 @@
     </script>
 
   <div class="topnav">
-    <a href="index.php">SALIR</a>
+    <a href="logout.php">SALIR</a>
     <a href="#creardoctor" onclick="popBox();">AÑADIR DOCTOR</a>
     <a href="doctorsAdmin.php">DOCTORES</a>
     <a href="admin.php" class="active">INICIO</a>

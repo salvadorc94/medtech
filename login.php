@@ -1,3 +1,15 @@
+<?php
+session_start();
+
+if(isset($_SESSION['normal'])){
+  header("Location: patients.php");
+}
+
+if(isset($_SESSION['admin'])){
+  header("Location: admin.php");
+}
+
+ ?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -10,9 +22,9 @@
   <div class="card">
     <div class="container">
       <h1 class="texto1" style="font-size:3vw">Iniciar Sesión</h1>
-      <form id="LoginForm">
-        <input type="text"  id="inputUser" placeholder="Usuario"><br>
-        <input type="password"  id="inputPass" placeholder="Contraseña"><br>
+      <form id="LoginForm" action="verify.php" method="POST">
+        <input type="text"  id="inputUser" placeholder="Usuario" name="inputUser" required><br>
+        <input type="password"  id="inputPass" placeholder="Contraseña" name="inputPass" required><br>
         <button type="submit" id="Acceder">Acceder</button>
       </form>
     </div>

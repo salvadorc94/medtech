@@ -1,3 +1,10 @@
+<?php
+session_start();
+if(!isset($_SESSION['normal'])){
+  header("Location: login.php");
+}
+//include("bdd/query.php");
+ ?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -58,7 +65,7 @@
     </script>
 
   <div class="topnav">
-    <a href="index.php">SALIR</a>
+    <a href="logout.php">SALIR</a>
     <a href="doctors.php" class="active">DOCTORES</a>
     <a href="patients.php">INICIO</a>
     <a href="#" onclick="popBox2();">doctor_name</a>

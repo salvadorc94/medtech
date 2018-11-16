@@ -1,6 +1,7 @@
 <?php
 
-include("connect.php");
+include("bdd/connect.php");
+include("bdd/query.php");
 session_start();
 
 if(isset($_POST['guest'])){
@@ -11,6 +12,26 @@ if(isset($_POST['guest'])){
   header("Location: index.php");
 }
 
+if($_POST['inputUser'] == "" && $_POST['inputPass'] == ""){
+  header("Location: login.php");
+}else{
+  $encrypted_pass = hash_hmac('sha256',$_POST['inputPass'],'superman');
+  $result_login = pg_query_params($con, 'SELECT user_name, pass FROM users WHERE user_name = $1 AND pass = $2 limit 1', array($_POST['inputUser'], $encrypted_pass));
+
+  $row = pg_fetch_row($result_login);
+  if($row[0] != ""){
+    if($row[0] == "admin"){
+      $_SESSION['admin'] = hash_hmac('sha256','admin','superman');
+      header("Location: admin.php");
+    }else{
+      $_SESSION['normal'] = hash_hmac('sha256','normal','pleb');
+      header("Location: patients.php");
+    }
+  }else{
+    header("Location: login.php");
+  }
+}
+pg_free_result($result_login);
 pg_close($con);
 
  ?>

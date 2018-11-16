@@ -10,9 +10,9 @@
   <div class="card">
     <div class="container">
       <h1 class="texto1" style="font-size:3vw">Bienvenido a MedTech</h1>
-      <form id="LoginForm">
-        <button type="submit" id="Acceder">Acceder</button>
-        <button type="submit" id="Invitado">Invitado</button>
+      <form id="LoginForm" action="verify.php" method="POST">
+        <button type="submit" id="Acceder" name="login" value="login">Acceder</button>
+        <button type="submit" id="Invitado" name="guest" value="invitado">Invitado</button>
       </form>
     </div>
   </div>

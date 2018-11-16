@@ -1,3 +1,13 @@
+<?php
+session_start();
+if(!isset($_SESSION['invitado'])){
+  header("Location: index.php");
+}
+
+
+
+ ?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -9,9 +19,8 @@
 <body>
 
   <div class="topnav">
-    <a href="index.php" class="active">SALIR</a>
+    <a href="logout.php" class="active">SALIR</a>
   </div>
-
   <div class="main">
     <div class="padre">
     <div class="card">

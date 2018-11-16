@@ -63,7 +63,7 @@
     <a href="patients.php">INICIO</a>
     <a href="#" onclick="popBox2();">doctor_name</a>
   </div>
-  
+
 
   <div class="main">
     <div class="padre">

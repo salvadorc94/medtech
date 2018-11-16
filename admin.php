@@ -3,7 +3,9 @@ session_start();
 if(!isset($_SESSION['admin'])){
   header("Location: login.php");
 }
-//include("bdd/query.php");
+include("bdd/query.php");
+
+
  ?>
 
 <!DOCTYPE html>
@@ -85,20 +87,30 @@ if(!isset($_SESSION['admin'])){
     <a href="#creardoctor" onclick="popBox();">AÑADIR DOCTOR</a>
     <a href="doctorsAdmin.php">DOCTORES</a>
     <a href="admin.php" class="active">INICIO</a>
-    <a href="#" onclick="popBox2();">doctor_name</a>
+    <a href="#" onclick="popBox2();"><?php echo $user[0];  ?></a>
   </div>
 
-  <div class="main">
-    <div class="padre">
-    <div class="card">
-      <div class="container">
-        <h2>Nombre_paciente</h2>
-        <p>Este paciente es chevere</p>
-        <h3>Correo</h3>
-          <div>Telefono1, Telefono2, Telefono3, Telefono4</div>
+  <?php
+    while ($row = pg_fetch_row($result_admin)) {
+    echo '
+    <div class="main">
+      <div class="padre">
+      <div class="card">
+        <div class="container">
+          <h2>'.$row[2].'</h2>
+          <p>'.$row[3].'</p>
+          <h3>'.$row[5].'</h3>
+            <div>'.$row[4].'</div>
+        </div>
       </div>
     </div>
-  </div>
+    </div>
+    ';
+  }
+  echo $_SESSION['id'];
+  pg_free_result($result_admin);
+  pg_close($con);
+   ?>
 
 </body>
 </html>

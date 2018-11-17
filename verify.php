@@ -30,6 +30,31 @@ if(isset($_POST['editar_admin'])){
   unset($_POST["editar_admin"] );
 }
 
+if(isset($_POST['editar_usuario'])){
+  $id = $_SESSION['id'];
+  $encrypted_pass = hash_hmac('sha256',$_POST['oldPass'],'pasaje');
+  $new_pass = hash_hmac('sha256',$_POST['newPass'],'pasaje');
+  $db_pass = pg_query($con,"SELECT pass FROM users WHERE iduser=". $id ."");
+  $row = pg_fetch_row($db_pass);
+  $cadena_tratada = trim($_POST['newPass']);
+
+  $user = trim($_POST['editUser']);
+  $num = trim($_POST['editNumber']);
+  $desc = trim($_POST['editDesc']);
+  $mail = trim($_POST['editMail']);
+
+  if($row[0] == $encrypted_pass && $cadena_tratada != ""){
+    pg_query_params($con,'UPDATE users SET pass= $1 WHERE iduser= $2',array($new_pass,$id));
+    //Se pudo
+  }
+
+  if($user !="" && $num !="" && $desc !="" && $mail !=""){
+    pg_query_params($con,'UPDATE users SET doctor_name= $1, description= $2, mail=$3, number=$4 WHERE iduser= $5',array($user,$desc,$mail,$num,$id));
+  }
+
+  unset($_POST['editar_usuario']);
+}
+
 if(isset($_POST['add_medic'])){
   $user = trim($_POST['addUser']);
   $nombre = trim($_POST['addNombre']);

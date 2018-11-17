@@ -35,15 +35,14 @@ include("bdd/query.php");
   <!-- Modal content -->
   <div class="modal-content">
     <span class="close" onclick="closeBox2();">&times;</span>
-    <p style="font-size:1vw">Editar Usuario</p>
     <form id="EditMedicForm" action="verify.php" method="POST">
-      <input type="text"  name="editUser" placeholder="Usuario" value="valor de la base" required/><br>
+      <input type="text"  name="editUser" placeholder="Usuario" value="<?php echo $user[3];?>" required/><br>
       <p>Dejar en blanco para no cambiar</p>
       <label style="font-size:1vw">Contraseña vieja: </label> <input type="password"  name="oldPass" /><br>
       <label style="font-size:1vw">Contraseña nueva: </label><input type="password"  name="newPass" /><br>
-      <input type="text" name="editNumber" placeholder="Número" value="valor de la base" required/><br>
-      <input type="text" name="editDesc" placeholder="Descripción" value="valor de la base" required/><br>
-      <input type="text" name="editMail" placeholder="E-mail" value="valor de la base" required/>
+      <input type="text" name="editNumber" placeholder="Número" value="<?php echo $user[6];?>" required/><br>
+      <input type="text" name="editDesc" placeholder="Descripción" value="<?php echo $user[4];?>" required/><br>
+      <input type="text" name="editMail" placeholder="E-mail" value="<?php echo $user[5];?>" required/>
       <button type="submit" id="Editar" name="editar_usuario">Guardar</button>
     </form>
   </div>
@@ -83,7 +82,7 @@ include("bdd/query.php");
     <a href="doctors.php">DOCTORES</a>
     <a href="#" onclick="popBox();">AÑADIR PACIENTE</a>
     <a href="patients.php" class="active">INICIO</a>
-    <a href="#" onclick="popBox2();"><?php echo $user[0];  ?></a>
+    <a href="#" onclick="popBox2();"><?php echo $user[1];  ?></a>
   </div>
 
   <?php

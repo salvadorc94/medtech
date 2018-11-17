@@ -24,12 +24,14 @@ include("bdd/query.php");
     <div class="modal-content">
       <span class="close" onclick="closeBox();">&times;</span>
       <h1 style="font-size:3vw">Crear medico</h1>
-      <form id="AddMedicForm">
-        <input type="text"  id="addUser" placeholder="Usuario"><br>
-        <input type="text"  id="addPass" placeholder="DummyPass"/><br>
-        <input type="text" id="addNumber" placeholder="Número"/><br>
-        <input type="desc" id="addDesc" placeholder="Descripción"/><br>
-        <button type="submit" id="Guardar">Guardar</button>
+      <form id="AddMedicForm" action="verify.php" method="POST">
+        <input type="text"  name="addUser" placeholder="Usuario" required/><br>
+        <input type="text"  name="addNombre" placeholder="Nombre" required/><br>
+        <input type="text"  name="addPass" placeholder="DummyPass" required/><br>
+        <input type="text" name="addNumber" placeholder="Número" required/><br>
+        <input type="text" name="addDesc" placeholder="Descripción" required/><br>
+        <input type="text" name="addMail" placeholder="Mail" required/><br>
+        <button type="submit" id="Guardar" name="add_medic">Guardar</button>
       </form>
     </div>
 </div>
@@ -40,14 +42,10 @@ include("bdd/query.php");
   <div class="modal-content">
     <span class="close" onclick="closeBox2();">&times;</span>
     <p style="font-size:1vw">Editar Usuario</p>
-    <form id="EditMedicForm">
-      <input type="text"  id="editUser" placeholder="Usuario" value="valor de la base"><br>
-      <p>Dejar en blanco para no cambiar</p>
-      <label style="font-size:1vw">Contraseña vieja: </label> <input type="password"  id="oldPass" /><br>
-      <label style="font-size:1vw">Contraseña nueva: </label><input type="password"  id="newPass" /><br>
-      <input type="text" id="editNumber" placeholder="Número" value="valor de la base"/><br>
-      <input type="desc" id="editDesc" placeholder="Descripción" value="valor de la base"/><br>
-      <button type="submit" id="Editar">Guardar</button>
+    <form id="EditMedicForm" action="verify.php" method="POST">
+      <label style="font-size:1vw">Contraseña vieja: </label> <input type="password" name="oldPass" required /><br>
+      <label style="font-size:1vw">Contraseña nueva: </label><input type="password" name="newPass" required /><br>
+      <button type="submit" id="Editar" name="editar_admin">Guardar</button>
     </form>
   </div>
 </div>

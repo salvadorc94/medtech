@@ -107,7 +107,6 @@ include("bdd/query.php");
     </div>
     ';
   }
-  echo $_SESSION['id'];
   pg_free_result($result_admin);
   pg_close($con);
    ?>

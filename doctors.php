@@ -3,7 +3,7 @@ session_start();
 if(!isset($_SESSION['normal'])){
   header("Location: login.php");
 }
-//include("bdd/query.php");
+include("bdd/query.php");
  ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -15,7 +15,21 @@ if(!isset($_SESSION['normal'])){
 <link href="css/modalBox.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
-
+  <!-- The Modal -->
+  <div id="myModal" class="modal">
+    <!-- Modal content -->
+    <div class="modal-content">
+      <span class="close" onclick="closeBox();">&times;</span>
+      <h1 style="font-size:3vw">Crear paciente</h1>
+      <form id="AddMedicForm">
+        <input type="text"  id="addUser" placeholder="Usuario"><br>
+        <input type="desc" id="addDesc" placeholder="Descripción"/><br>
+        <input type="text" id="addNumber" placeholder="Número"/><br>
+        <input type="text" id="addMail" placeholder="Correo"/><br>
+        <button type="submit" id="Guardar">Guardar</button>
+      </form>
+    </div>
+  </div>
     <!-- The Modal -->
 <div id="myModal2" class="modal">
   <!-- Modal content -->
@@ -67,22 +81,33 @@ if(!isset($_SESSION['normal'])){
   <div class="topnav">
     <a href="logout.php">SALIR</a>
     <a href="doctors.php" class="active">DOCTORES</a>
+    <a href="#" onclick="popBox();">AÑADIR PACIENTE</a>
     <a href="patients.php">INICIO</a>
-    <a href="#" onclick="popBox2();">doctor_name</a>
+    <a href="#" onclick="popBox2();"><?php echo $user[0];  ?></a>
   </div>
 
-
-  <div class="main">
-    <div class="padre">
-    <div class="card">
-      <div class="container">
-        <h2>Nombre_paciente</h2>
-        <p>Este paciente es chevere</p>
-        <h3>Correo</h3>
-          <div>Telefono1, Telefono2, Telefono3, Telefono4</div>
-      </div>
-    </div>
-  </div>
+  <?php
+    while ($row = pg_fetch_row($result)) {
+      if($row[4]!="admin"){
+        echo '
+        <div class="main">
+          <div class="padre">
+          <div class="card">
+            <div class="container">
+              <h2>'.$row[0].'</h2>
+              <p>'.$row[1].'</p>
+              <h3>'.$row[2].'</h3>
+                <div>'.$row[3].'</div>
+            </div>
+          </div>
+        </div>
+        </div>
+        ';
+      }
+  }
+  pg_free_result($result);
+  pg_close($con);
+   ?>
 
 </body>
 </html>

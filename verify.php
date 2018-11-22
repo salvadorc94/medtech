@@ -1,7 +1,16 @@
 <?php
 //CADA VEZ QUE SE HACE ALGO SE VERIFICA TODAS LAS  PASS ESTAN ENCRIPTADAS CON SHA256
 //include("bdd/connect.php");
-include("bdd/query.php");
+
+$conn_string ="host=localhost port=5432 dbname=medtech user=salvador password=benjibenji2018";
+$con = pg_connect($conn_string);
+
+if(!$con){
+  echo "Error conectando a la base de datos";
+  exit;
+}
+
+
 session_start();
 
 if(isset($_POST['guest'])){
@@ -110,5 +119,7 @@ if(!isset($_POST['inputUser']) && !isset($_POST['inputPass'])){
   header("Location: login.php");
   }
 }
+
+pg_close($con);
 
  ?>

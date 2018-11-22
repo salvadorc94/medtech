@@ -1,10 +1,11 @@
 <?php
-
+//CADA VEZ QUE SE HACE ALGO SE VERIFICA TODAS LAS  PASS ESTAN ENCRIPTADAS CON SHA256
 include("bdd/connect.php");
 include("bdd/query.php");
 session_start();
 
 if(isset($_POST['guest'])){
+  //CUANDO EL USUARIO ES INVITADO SE GENERA UN TOKEN DE 64 BITS
   $token = bin2hex(openssl_random_pseudo_bytes(64));
   $_SESSION['invitado'] = $token;
   header("Location: guest.php");
@@ -88,7 +89,7 @@ if(isset($_POST['add_paciente'])){
   unset($_POST["add_paciente"] );
 }
 
-
+//CUANDO EL USUARIO INICIA SESION SE LE ASIGNA UNA SESION ENCRIPTADA CON UNA PALABRA CLAVE DEPENDIENDO DE SU ROL
 if(!isset($_POST['inputUser']) && !isset($_POST['inputPass'])){
   header("Location: login.php");
 }else{

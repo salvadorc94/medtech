@@ -1,7 +1,15 @@
 <?php
 //AQUI SE HACEN TODAS LAS CONSULTAS SIEMPRE SE VERIFICA QUE LA SESION SEA LA CORRECTA
 //lOS DATOS INGRESADOS POR EL USUARIO SON VERIFICADOS Y USADOS MEDIANTE PARAMETROS
-include_once("connect.php");
+
+$conn_string ="host=localhost port=5432 dbname=medtech user=salvador password=benjibenji2018";
+$con = pg_connect($conn_string);
+
+if(!$con){
+  echo "Error conectando a la base de datos";
+  exit;
+}
+
 
 if(isset($_SESSION['invitado'])){
   $result = pg_query($con,"SELECT doctor_name, description, mail, number, user_name FROM users");
@@ -44,4 +52,6 @@ if(isset($_SESSION['normal']) && $_SESSION['normal'] == hash_hmac('sha256','norm
     exit;
   }
 }
+
+pg_close($con);
  ?>

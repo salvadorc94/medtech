@@ -1,6 +1,6 @@
 <?php
 //CADA VEZ QUE SE HACE ALGO SE VERIFICA TODAS LAS  PASS ESTAN ENCRIPTADAS CON SHA256
-include("bdd/connect.php");
+//include("bdd/connect.php");
 include("bdd/query.php");
 session_start();
 

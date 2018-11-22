@@ -111,6 +111,4 @@ if(!isset($_POST['inputUser']) && !isset($_POST['inputPass'])){
   }
 }
 
-pg_close($con);
-
  ?>

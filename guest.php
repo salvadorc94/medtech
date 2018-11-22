@@ -39,8 +39,6 @@ include("bdd/query.php");
       ';
     }
 }
-pg_free_result($result);
-pg_close($con);
  ?>
 
 </body>

@@ -105,8 +105,6 @@ include("bdd/query.php");
     </div>
     ';
   }
-  pg_free_result($result_admin);
-  pg_close($con);
    ?>
 
 </body>

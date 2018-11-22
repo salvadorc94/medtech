@@ -9,7 +9,7 @@ if(isset($_POST['guest'])){
   $token = bin2hex(openssl_random_pseudo_bytes(64));
   $_SESSION['invitado'] = $token;
   header("Location: guest.php");
-  break;
+  exit;
 }else{
   header("Location: index.php");
 }
@@ -110,8 +110,7 @@ if(!isset($_POST['inputUser']) && !isset($_POST['inputPass'])){
   header("Location: login.php");
   }
 }
-/*
-pg_free_result($result_login);
+
 pg_close($con);
-*/
+
  ?>
